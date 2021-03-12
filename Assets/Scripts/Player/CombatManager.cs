@@ -14,6 +14,10 @@ public class CombatManager : MonoBehaviour
 
     public bool canReceiveInput = true;
     public bool inputReceived;
+    [SerializeField]
+    private bool recovering = false;
+    [SerializeField]
+    private bool cancelling = false;
 
     public int stage = 0;
 
@@ -40,45 +44,47 @@ public class CombatManager : MonoBehaviour
 
     public void OnAttack()
     {
-        bool groundState = pm.getGroundedState();
-        if (groundState)
+        if (!recovering)
         {
-            pm.movementEnabled = false;
-            pm.isAttacking = true;
-            regularAttack();
-        }
-        else
-        {
-            pm.isAttacking = true;
-            jumpAttack();
+            bool groundState = pm.getGroundedState();
+            if (groundState)
+            {
+                pm.movementEnabled = false;
+                pm.isAttacking = true;
+                regularAttack();
+            }
+            else
+            {
+                pm.isAttacking = true;
+                jumpAttack();
+            }
         }
     }
 
     private void regularAttack()
     {
         
-        if (canReceiveInput)
+        if (canReceiveInput && !recovering)
         {
-            inputReceived = true;
+            
             canReceiveInput = false;
         
             if(stage == 0)
             {
                 //first hit
                 stage++;
-                anim.Play("attack1Startup");
+                anim.Play(PlayerAnimStates.ATTACK1_START);
             }
             else if(stage == 1)
             {
                 //second hit
                 stage++;
-                anim.Play("attack2Active");
+                anim.Play(PlayerAnimStates.ATTACK2_START);
             }
             else if(stage == 2)
             {
-                print("NEWTESt");
                 stage++;
-                anim.Play("attack3Startup");
+                anim.Play(PlayerAnimStates.ATTACK3_START);
             }
         }
         else
@@ -92,7 +98,7 @@ public class CombatManager : MonoBehaviour
         if (canReceiveInput)
         {
             canReceiveInput = false;
-            anim.Play("jumpAttackStartup");
+            anim.Play(PlayerAnimStates.JUMP_ATTACK);
 
         }
     }
@@ -121,13 +127,16 @@ public class CombatManager : MonoBehaviour
 
     public void resetAttackAnim()
     {
-        print(stage);
+        canReceiveInput = false;
+        recovering = true;
         stage = 0;
-        canReceiveInput = true;
+        
         pm.isAttacking = false;
         pm.movementEnabled = true;
         pm.IsDashing = false;
         pm.resetAnimatonState();
+        canReceiveInput = true;
+        recovering = false;
     }
 
     public void PerformAttack(float damage)

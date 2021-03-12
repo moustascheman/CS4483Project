@@ -307,23 +307,23 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded && xInput == 0 && !IsDashing)
             {
-                changeAnimationState("idle");
+                changeAnimationState(PlayerAnimStates.IDLE_STATE);
             }
             else if (IsDashing && isGrounded)
             {
-                changeAnimationState("dashStartup");
+                changeAnimationState(PlayerAnimStates.DASH);
             }
             else if (isGrounded && !IsDashing && xInput != 0)
             {
-                changeAnimationState("run");
+                changeAnimationState(PlayerAnimStates.RUN_STATE);
             }
             else if (!isGrounded && yVelocity > 0)
             {
-                changeAnimationState("jumpStartup");
+                changeAnimationState(PlayerAnimStates.JUMP_START);
             }
             else if (!isGrounded && yVelocity <= 0)
             {
-                changeAnimationState("jumpescendStartup");
+                changeAnimationState(PlayerAnimStates.DESCEND_START);
             }
         }
     }
@@ -341,6 +341,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void resetAnimatonState()
     {
-        currentState = "wildCard";
+        currentState = PlayerAnimStates.WILDCARD;
     }
 }
