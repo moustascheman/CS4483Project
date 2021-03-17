@@ -105,17 +105,17 @@ public class CombatManager : MonoBehaviour
         if(stage == 1)
         {
             dm.currentDamage = 2f;
-            dm.currentHitstun = 1f;
+            dm.currentHitstun = 0.3f;
         }
         if(stage == 2)
         {
             dm.currentDamage = 4f;
-            dm.currentHitstun = 1.5f;
+            dm.currentHitstun = 0.3f;
         }
         if(stage == 3)
         {
             dm.currentDamage = 6f;
-            dm.currentHitstun = 2f;
+            dm.currentHitstun = 0.3f;
         }
         dm.comboStage = stage;
     }

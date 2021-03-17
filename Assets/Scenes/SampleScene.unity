@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggro: 0
   busy: 0
-  coolDownTime: 3
+  coolDownTime: 1
   controller: {fileID: 762248657}
   target: {fileID: 0}
 --- !u!114 &762248657
@@ -4737,6 +4737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 762248652}
   DefaultFaceDirectionIsLeft: 1
+  bhvr: {fileID: 762248656}
 --- !u!114 &762248658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4751,6 +4752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 20
   currentHealth: 20
+  controller: {fileID: 762248657}
   currentComboStage: 0
   isInHitStun: 0
 --- !u!1 &819817579

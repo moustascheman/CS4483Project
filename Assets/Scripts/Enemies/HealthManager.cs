@@ -10,6 +10,9 @@ public class HealthManager : MonoBehaviour, IHealthManager
     private float currentHealth = 20f;
 
     [SerializeField]
+    private EnemyController controller;
+
+    [SerializeField]
     //DO NOT CHANGE FROM DEFAULT ZERO ON ANY ENEMY
     private float currentComboStage = 0;
 
@@ -23,7 +26,10 @@ public class HealthManager : MonoBehaviour, IHealthManager
    public void Kill()
     {
         Debug.Log("KILLING Character");
-        Destroy(gameObject);
+        StopCoroutine(hitstunRoutine);
+        controller.pauseBehavior();
+        controller.playAnim("wizDie");
+        StartCoroutine(waiter(4f));
     }
 
 
@@ -44,6 +50,7 @@ public class HealthManager : MonoBehaviour, IHealthManager
             }
             else
             {
+                controller.playAnimWithCancels("wizDam");
                 if (isInHitStun)
                 {
                     StopCoroutine(hitstunRoutine);
@@ -65,10 +72,18 @@ public class HealthManager : MonoBehaviour, IHealthManager
     //TODO  Hitstun and IFrames are currently one and the same. They should probably be seperated so that hitstun only determines how long a character is stunned (can't move/perform actions) 
     public IEnumerator HitStun(float time)
     {
+        controller.pauseBehavior();
         isInHitStun = true;
         yield return new WaitForSeconds(time);
         currentComboStage = 0;
         isInHitStun = false;
+        controller.resumeBehavior();
         Debug.Log(time);
+    }
+
+    private IEnumerator waiter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

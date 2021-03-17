@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     private bool DefaultFaceDirectionIsLeft = false;
     private string state = "";
 
+    [SerializeField]
+    private ShooterBehavior bhvr;
 
     public void playAnim(string animationName)
     {
@@ -19,10 +21,26 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void playAnimWithCancels(string name)
+    {
+        state = PlayerAnimStates.WILDCARD;
+        anim.Play(name, -1, 0f);
+    }
+
     public float getRemainingAnimTime()
     {
         
         return anim.GetCurrentAnimatorStateInfo(0).length;
+    }
+
+    public void pauseBehavior()
+    {
+        bhvr.busy = true;
+    }
+
+    public void resumeBehavior()
+    {
+        bhvr.busy = false;
     }
 
     public void FaceTowards(Transform target)
