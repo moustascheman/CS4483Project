@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-    public static CombatManager cbmInstance;
+
+    [SerializeField]
+    private DamageManager dm;
 
     [SerializeField]
     private PlayerMovement pm;
@@ -14,11 +16,11 @@ public class CombatManager : MonoBehaviour
 
     public bool canReceiveInput = true;
     public bool inputReceived;
+    [SerializeField]
+    private bool recovering = false;
 
     public int stage = 0;
 
-    [SerializeField]
-    private BoxCollider2D attackHitbox;
 
     [SerializeField]
     private LayerMask hitboxLayer;
@@ -27,58 +29,53 @@ public class CombatManager : MonoBehaviour
     private CombatUtil cUtil;
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void Awake()
-    {
-        cbmInstance = this;
-    }
 
     public void OnAttack()
     {
-        bool groundState = pm.getGroundedState();
-        if (groundState)
+        if (!recovering)
         {
-            pm.movementEnabled = false;
-            pm.isAttacking = true;
-            regularAttack();
-        }
-        else
-        {
-            pm.isAttacking = true;
-            jumpAttack();
+            bool groundState = pm.getGroundedState();
+            if (groundState)
+            {
+                pm.movementEnabled = false;
+                pm.isAttacking = true;
+                regularAttack();
+            }
+            else
+            {
+                pm.isAttacking = true;
+                jumpAttack();
+            }
         }
     }
 
     private void regularAttack()
     {
         
-        if (canReceiveInput)
+        if (canReceiveInput && !recovering)
         {
-            inputReceived = true;
+            
             canReceiveInput = false;
         
             if(stage == 0)
             {
                 //first hit
                 stage++;
-                anim.Play("attack1Startup");
+                UpdateDamageManagerSettings();
+                anim.Play(PlayerAnimStates.ATTACK1_START);
             }
             else if(stage == 1)
             {
                 //second hit
                 stage++;
-                anim.Play("attack2Active");
+                UpdateDamageManagerSettings();
+                anim.Play(PlayerAnimStates.ATTACK2_START);
             }
             else if(stage == 2)
             {
-                print("NEWTESt");
                 stage++;
-                anim.Play("attack3Startup");
+                UpdateDamageManagerSettings();
+                anim.Play(PlayerAnimStates.ATTACK3_START);
             }
         }
         else
@@ -91,11 +88,38 @@ public class CombatManager : MonoBehaviour
     {
         if (canReceiveInput)
         {
+            //Attack properties
+            dm.currentDamage = 5f;
+            dm.currentHitstun = 2f;
+            dm.comboStage = 3;
+
+
             canReceiveInput = false;
-            anim.Play("jumpAttackStartup");
+            anim.Play(PlayerAnimStates.JUMP_ATTACK);
 
         }
     }
+
+    private void UpdateDamageManagerSettings()
+    {
+        if(stage == 1)
+        {
+            dm.currentDamage = 2f;
+            dm.currentHitstun = 0.3f;
+        }
+        if(stage == 2)
+        {
+            dm.currentDamage = 4f;
+            dm.currentHitstun = 0.3f;
+        }
+        if(stage == 3)
+        {
+            dm.currentDamage = 6f;
+            dm.currentHitstun = 0.3f;
+        }
+        dm.comboStage = stage;
+    }
+
 
     public void disableAttacking()
     {
@@ -121,23 +145,18 @@ public class CombatManager : MonoBehaviour
 
     public void resetAttackAnim()
     {
-        print(stage);
+        canReceiveInput = false;
+        recovering = true;
         stage = 0;
-        canReceiveInput = true;
+        
         pm.isAttacking = false;
         pm.movementEnabled = true;
         pm.IsDashing = false;
         pm.resetAnimatonState();
+        canReceiveInput = true;
+        recovering = false;
     }
 
-    public void PerformAttack(float damage)
-    {
-        Collider2D hit = Physics2D.OverlapBox(attackHitbox.bounds.center, attackHitbox.bounds.size, 0f, hitboxLayer);
-        if (hit) { 
-            GameObject hitObj = hit.gameObject.transform.parent.gameObject;
-            cUtil.hitStop(0.05f);
-        }
-    }
 
 
 }
