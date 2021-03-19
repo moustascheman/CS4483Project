@@ -6,7 +6,7 @@ public class CombatManager : MonoBehaviour
 {
 
     [SerializeField]
-    private DamageManager dm;
+    private DamageSource dm;
 
     [SerializeField]
     private PlayerMovement pm;
@@ -157,6 +157,19 @@ public class CombatManager : MonoBehaviour
         recovering = false;
     }
 
+    public void stunPlayer()
+    {
+        pm.stunPlayer();
+        resetAttackAnim();
+        canReceiveInput = false;
+        recovering = true;
+    }
 
+    public void endStun()
+    {
+        pm.endStun();
+        canReceiveInput = true;
+        recovering = false;
+    }
 
 }

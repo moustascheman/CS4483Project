@@ -71,18 +71,23 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isAttacking = false;
 
+    private bool stunned = false;
+
 
 
     void FixedUpdate()
     {
-        if (movementEnabled)
+        if (!stunned)
         {
-            Move();
+            if (movementEnabled)
+            {
+                Move();
+            }
+            GroundCheck();
+            ApplyGravity();
+            updateDashTimer();
+            UpdateAnimationState();
         }
-        GroundCheck();
-        ApplyGravity();
-        updateDashTimer();
-        UpdateAnimationState();
     }
 
     public bool getGroundedState()
@@ -342,5 +347,19 @@ public class PlayerMovement : MonoBehaviour
     public void resetAnimatonState()
     {
         currentState = PlayerAnimStates.WILDCARD;
+    }
+
+    public void stunPlayer()
+    {
+        //reset and stop all movement variables
+        resetAnimatonState();
+        endJumpEarly();
+        IsDashing = false;
+        stunned = true;
+    }
+
+    public void endStun()
+    {
+        stunned = false;
     }
 }

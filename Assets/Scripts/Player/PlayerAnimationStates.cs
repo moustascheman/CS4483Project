@@ -14,6 +14,8 @@ public static class PlayerAnimStates
     public static string ATTACK2_START = "knightAttack2";
     public static string ATTACK3_START = "knightAttack3";
     public static string JUMP_ATTACK = "knightJumpAttack";
+    public static string DAMAGE_ANIM = "playerDam";
+    public static string DEATH_ANIM = "playerDie";
 
 
 

@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hitbox : MonoBehaviour
+public class HealthPickupHitbox : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask groundLayer;
-
-    [SerializeField]
-    private LayerMask hurtboxLayer;
-
     [SerializeField]
     private bool isPlayerHitbox = false;
 
@@ -21,11 +15,11 @@ public class Hitbox : MonoBehaviour
         Hurtbox hurtbox = col.GetComponent<Hurtbox>();
         if (hurtbox)
         {
-            if ((isPlayerHitbox && !hurtbox.isPlayerHurtbox) || (!isPlayerHitbox && hurtbox.isPlayerHurtbox))
+            if (hurtbox.isPlayerHurtbox)
             {
                 hurtbox.detectHit(dam.currentDamage, dam.currentHitstun, dam.comboStage);
+                Destroy(dam.gameObject);
             }
         }
     }
-
 }
