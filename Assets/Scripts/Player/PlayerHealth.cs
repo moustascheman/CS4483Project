@@ -13,6 +13,7 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
     [SerializeField]
     private float invulnTime;
 
+    [SerializeField]
     private bool isStunned = false;
     private int currentComboStage = 0;
 
@@ -92,15 +93,12 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
 
     private void damageEffects()
     {
-        if (sTimer != null)
-        {
-            StopCoroutine(sTimer);
-        }
         if(iframes != null)
         {
             StopCoroutine(iframes);
         }
-        sTimer = StartCoroutine(StunTimer());
+        isStunned = true;
+        cmb.stunPlayer();
         iframes = StartCoroutine(InvulnTimer());
         if(!isBlinking)
         {
@@ -110,17 +108,9 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
     }
 
 
-    private void disableStun()
+    public void finishStun()
     {
         isStunned = false;
-    }
-
-    IEnumerator StunTimer()
-    {
-        isStunned = true;
-        cmb.stunPlayer();
-        anim.Play(PlayerAnimStates.DAMAGE_ANIM);
-         yield return new WaitUntil(() => !isStunned);
         cmb.endStun();
     }
 

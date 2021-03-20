@@ -69,8 +69,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private string currentState =  "idle";
 
-    public bool isAttacking = false;
+    public bool updateAnimationAllowed = true;
 
+    [SerializeField]
     private bool stunned = false;
 
 
@@ -301,14 +302,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnAttack()
-    {
-        isAttacking = true;
-    }
 
     private void UpdateAnimationState()
     {
-        if (!isAttacking)
+        if (updateAnimationAllowed)
         {
             if (isGrounded && xInput == 0 && !IsDashing)
             {
@@ -333,14 +330,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void changeAnimationState(string state)
+    public void changeAnimationState(string state)
     {
         if (state.Equals(currentState))
         {
             return;
         }
         currentState = state;
-        anim.Play(state);
+        anim.Play(state, -1, 0f);
 
     }
 

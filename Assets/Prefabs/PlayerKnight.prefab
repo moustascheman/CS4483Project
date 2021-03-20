@@ -238,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4374934191650391218}
   - component: {fileID: 4374934191650391221}
+  - component: {fileID: 722102962}
   m_Layer: 0
   m_Name: HeadBox
   m_TagString: Untagged
@@ -285,6 +286,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2502997, y: 0.06071949}
   m_EdgeRadius: 0
+--- !u!114 &722102962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374934191650391219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3caf5ae7d469fa488fece7aae8fc78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pm: {fileID: 4374934192204486971}
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4374934191673122825
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4374934192204486948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5598605, y: -0.19777207, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4374934191623594533}

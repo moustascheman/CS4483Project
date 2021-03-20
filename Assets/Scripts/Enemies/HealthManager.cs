@@ -13,6 +13,9 @@ public class HealthManager : MonoBehaviour, IHealthManager
     private EnemyController controller;
 
     [SerializeField]
+    private float invulnTimer;
+
+    [SerializeField]
     //DO NOT CHANGE FROM DEFAULT ZERO ON ANY ENEMY
     private float currentComboStage = 0;
 
@@ -21,17 +24,48 @@ public class HealthManager : MonoBehaviour, IHealthManager
 
     private Coroutine hitstunRoutine;
 
+    [SerializeField]
+    private List<GameObject> hBoxes;
+
+    [SerializeField]
+    private List<GameObject> Drops;
+
+    [SerializeField]
+    private float dropPercent = 10;
+
+    [SerializeField]
+    private float dropInitialJump = 0.5f;
+
 
 
    public void Kill()
     {
-        Debug.Log("KILLING Character");
+        foreach(GameObject obj  in hBoxes)
+        {
+            obj.SetActive(false);
+        }
         StopCoroutine(hitstunRoutine);
         controller.pauseBehavior();
         controller.playAnim("wizDie");
-        StartCoroutine(waiter(4f));
+        Drop();
+        Destroy(gameObject, 4f);
     }
 
+    private void Drop()
+    {
+        float chance = Random.Range(1, 100);
+        if(chance <= dropPercent)
+        {
+            //Drop Pickup
+            int index = Random.Range(0, Drops.Count - 1);
+            GameObject dropObj = Drops[index];
+            GameObject fDrop = Instantiate(dropObj, gameObject.transform);
+            Rigidbody2D rb = fDrop.GetComponent<Rigidbody2D>();
+            rb.velocity = dropInitialJump*Vector2.up;
+            fDrop.transform.parent = null;
+            Destroy(fDrop, 10f);
+        }
+    }
 
     public void KillQuietly()
     {
@@ -46,6 +80,7 @@ public class HealthManager : MonoBehaviour, IHealthManager
             //attack hits
             if((currentHealth - dam) <= 0)
             {
+                currentHealth -= dam;
                 Kill();
             }
             else
@@ -56,34 +91,31 @@ public class HealthManager : MonoBehaviour, IHealthManager
                     StopCoroutine(hitstunRoutine);
                     currentHealth -= dam;
                     currentComboStage = comboStage;
-                    hitstunRoutine = StartCoroutine(HitStun(hitstun));
+                    hitstunRoutine = StartCoroutine(HitStun());
                 }
                 else
                 {
                     currentHealth -= dam;
                     currentComboStage = comboStage;
-                    hitstunRoutine = StartCoroutine(HitStun(hitstun));
+                    hitstunRoutine = StartCoroutine(HitStun());
                     
                 }
             }
         }
     }
-     
-    //TODO  Hitstun and IFrames are currently one and the same. They should probably be seperated so that hitstun only determines how long a character is stunned (can't move/perform actions) 
-    public IEnumerator HitStun(float time)
+      
+    public IEnumerator HitStun()
     {
         controller.pauseBehavior();
         isInHitStun = true;
-        yield return new WaitForSeconds(time);
+        yield return new WaitUntil(() => !isInHitStun);
         currentComboStage = 0;
-        isInHitStun = false;
         controller.resumeBehavior();
-        Debug.Log(time);
     }
 
-    private IEnumerator waiter(float time)
+    private void EndStun()
     {
-        yield return new WaitForSeconds(time);
-        Destroy(gameObject);
+        isInHitStun = false;
     }
+
 }
