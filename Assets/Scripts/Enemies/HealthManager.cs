@@ -15,6 +15,14 @@ public class HealthManager : MonoBehaviour, IHealthManager
     [SerializeField]
     private float invulnTimer;
 
+
+    [SerializeField]
+    private string deathAnim = "wizDie";
+
+    [SerializeField]
+    private string damAnim = "wizDam";
+
+
     [SerializeField]
     //DO NOT CHANGE FROM DEFAULT ZERO ON ANY ENEMY
     private float currentComboStage = 0;
@@ -46,7 +54,7 @@ public class HealthManager : MonoBehaviour, IHealthManager
         }
         StopCoroutine(hitstunRoutine);
         controller.pauseBehavior();
-        controller.playAnim("wizDie");
+        controller.playAnim(deathAnim);
         Drop();
         Destroy(gameObject, 4f);
     }
@@ -85,7 +93,7 @@ public class HealthManager : MonoBehaviour, IHealthManager
             }
             else
             {
-                controller.playAnimWithCancels("wizDam");
+                controller.playAnimWithCancels(damAnim);
                 if (isInHitStun)
                 {
                     StopCoroutine(hitstunRoutine);
