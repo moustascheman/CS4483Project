@@ -14,7 +14,7 @@ public class Hitbox : MonoBehaviour
     private bool isPlayerHitbox = false;
 
     [SerializeField]
-    private DamageManager dam;
+    private DamageSource dam;
 
     public void OnTriggerEnter2D(Collider2D col)
     {

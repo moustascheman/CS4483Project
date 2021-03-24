@@ -11,7 +11,9 @@ public class EnemyController : MonoBehaviour
     private string state = "";
 
     [SerializeField]
-    private ShooterBehavior bhvr;
+    private EnemyBehavior bhvr;
+
+    public Vector2 forwardDir = Vector2.left;
 
     public void playAnim(string animationName)
     {
@@ -50,10 +52,12 @@ public class EnemyController : MonoBehaviour
             if(target.position.x > gameObject.transform.position.x && gameObject.transform.localScale.x != -1)
             {
                 gameObject.transform.localScale = new Vector3(-1, 1, 1);
+                forwardDir = Vector2.right;
             }
             else if(target.position.x < gameObject.transform.position.x && gameObject.transform.localScale.x != 1)
             {
                 gameObject.transform.localScale = new Vector3(1, 1, 1);
+                forwardDir = Vector2.left;
             }
         }
         else
@@ -61,10 +65,12 @@ public class EnemyController : MonoBehaviour
             if(target.position.x > gameObject.transform.position.x && gameObject.transform.localScale.x != 1)
             {
                 gameObject.transform.localScale = new Vector3(1, 1, 1);
+                forwardDir = Vector2.right;
             }
             else if(target.position.x < gameObject.transform.position.x && gameObject.transform.localScale.x != -1)
             {
                 gameObject.transform.localScale = new Vector3(-1, 1, 1);
+                forwardDir = Vector2.left;
             }
         }
     }

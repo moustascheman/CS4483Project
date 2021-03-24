@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterBehavior : MonoBehaviour
+public class ShooterBehavior : EnemyBehavior
 {
 
-    public bool aggro = false;
-    private bool coolDown = false;
-    private bool coolingDown = false;
-    public bool busy = false;
+    //PROJECTILE STUFF
     [SerializeField]
-    private float coolDownTime = 3f;
+    private GameObject projectileObj;
+
     [SerializeField]
-    EnemyController controller;
-    public GameObject target = null;
+    private float projectileVelocity;
+
+    [SerializeField]
+    private Transform firingPoint;
+
+    [SerializeField]
+    private bool projectileDefaultLeft = false;
 
     void FixedUpdate()
     {
@@ -59,8 +62,18 @@ public class ShooterBehavior : MonoBehaviour
     }
 
 
-    public void endAttackAnim()
+    private void FireProjectile()
     {
-        busy = false;
+        GameObject projectile = Instantiate(projectileObj, firingPoint);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.velocity = controller.forwardDir * projectileVelocity;
+    }
+
+    public void returnToIdle()
+    {
+        if (!busy)
+        {
+            controller.playAnim("wizIdle");
+        }
     }
 }

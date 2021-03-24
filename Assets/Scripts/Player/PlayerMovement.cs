@@ -69,20 +69,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private string currentState =  "idle";
 
-    public bool isAttacking = false;
+    public bool updateAnimationAllowed = true;
+
+    [SerializeField]
+    private bool stunned = false;
 
 
 
     void FixedUpdate()
     {
-        if (movementEnabled)
+        if (!stunned)
         {
-            Move();
+            if (movementEnabled)
+            {
+                Move();
+            }
+            GroundCheck();
+            ApplyGravity();
+            updateDashTimer();
+            UpdateAnimationState();
         }
-        GroundCheck();
-        ApplyGravity();
-        updateDashTimer();
-        UpdateAnimationState();
     }
 
     public bool getGroundedState()
@@ -296,14 +302,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnAttack()
-    {
-        isAttacking = true;
-    }
 
     private void UpdateAnimationState()
     {
-        if (!isAttacking)
+        if (updateAnimationAllowed)
         {
             if (isGrounded && xInput == 0 && !IsDashing)
             {
@@ -328,19 +330,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void changeAnimationState(string state)
+    public void changeAnimationState(string state)
     {
         if (state.Equals(currentState))
         {
             return;
         }
         currentState = state;
-        anim.Play(state);
+        anim.Play(state, -1, 0f);
 
     }
 
     public void resetAnimatonState()
     {
         currentState = PlayerAnimStates.WILDCARD;
+    }
+
+    public void stunPlayer()
+    {
+        //reset and stop all movement variables
+        resetAnimatonState();
+        endJumpEarly();
+        IsDashing = false;
+        stunned = true;
+    }
+
+    public void endStun()
+    {
+        stunned = false;
     }
 }

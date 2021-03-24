@@ -5,8 +5,9 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
 
+
     [SerializeField]
-    private DamageManager dm;
+    private DamageSource dm;
 
     [SerializeField]
     private PlayerMovement pm;
@@ -14,36 +15,28 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
-    public bool canReceiveInput = true;
-    public bool inputReceived;
-    [SerializeField]
-    private bool recovering = false;
-
     public int stage = 0;
 
+    //Can Cancel during the recovery frames of an attack
+    private bool canCancel = false;
 
-    [SerializeField]
-    private LayerMask hitboxLayer;
 
-    [SerializeField]
-    private CombatUtil cUtil;
-
+    //busy when an attack is playing or in a state where they cannot attack (such as hitstun)
+    public bool isBusy = false;
 
 
     public void OnAttack()
     {
-        if (!recovering)
+        if (!isBusy || canCancel)
         {
+            isBusy = true;
             bool groundState = pm.getGroundedState();
             if (groundState)
             {
-                pm.movementEnabled = false;
-                pm.isAttacking = true;
                 regularAttack();
             }
             else
             {
-                pm.isAttacking = true;
                 jumpAttack();
             }
         }
@@ -51,112 +44,110 @@ public class CombatManager : MonoBehaviour
 
     private void regularAttack()
     {
-        
-        if (canReceiveInput && !recovering)
+
+        pm.updateAnimationAllowed = false;
+        pm.movementEnabled = false;
+
+        pm.IsDashing = false;
+
+        if (stage == 0)
         {
-            
-            canReceiveInput = false;
-        
-            if(stage == 0)
-            {
-                //first hit
-                stage++;
-                UpdateDamageManagerSettings();
-                anim.Play(PlayerAnimStates.ATTACK1_START);
-            }
-            else if(stage == 1)
-            {
-                //second hit
-                stage++;
-                UpdateDamageManagerSettings();
-                anim.Play(PlayerAnimStates.ATTACK2_START);
-            }
-            else if(stage == 2)
-            {
-                stage++;
-                UpdateDamageManagerSettings();
-                anim.Play(PlayerAnimStates.ATTACK3_START);
-            }
+            //first hit
+            stage++;
+            UpdateDamageManagerSettings();
+            pm.resetAnimatonState();
+            pm.changeAnimationState(PlayerAnimStates.ATTACK1_START);
         }
-        else
+        else if (stage == 1)
         {
-            return;
+            //second hit
+            stage++;
+            UpdateDamageManagerSettings();
+            pm.changeAnimationState(PlayerAnimStates.ATTACK2_START);
+        }
+        else if (stage == 2)
+        {
+            stage++;
+            UpdateDamageManagerSettings();
+            pm.changeAnimationState(PlayerAnimStates.ATTACK3_START);
         }
     }
 
     private void jumpAttack()
     {
-        if (canReceiveInput)
-        {
-            //Attack properties
-            dm.currentDamage = 5f;
-            dm.currentHitstun = 2f;
-            dm.comboStage = 3;
+        pm.updateAnimationAllowed = false;
+        //Attack properties
+        dm.currentDamage = 5f;
+        dm.currentHitstun = 2f;
+        dm.comboStage = 3;
 
+        pm.changeAnimationState(PlayerAnimStates.JUMP_ATTACK);
 
-            canReceiveInput = false;
-            anim.Play(PlayerAnimStates.JUMP_ATTACK);
-
-        }
     }
 
     private void UpdateDamageManagerSettings()
     {
-        if(stage == 1)
+        if (stage == 1)
         {
             dm.currentDamage = 2f;
-            dm.currentHitstun = 0.3f;
+            dm.currentHitstun = 0f;
         }
-        if(stage == 2)
+        if (stage == 2)
         {
             dm.currentDamage = 4f;
-            dm.currentHitstun = 0.3f;
+            dm.currentHitstun = 0f;
         }
-        if(stage == 3)
+        if (stage == 3)
         {
             dm.currentDamage = 6f;
-            dm.currentHitstun = 0.3f;
+            dm.currentHitstun = 0f;
         }
         dm.comboStage = stage;
     }
 
 
-    public void disableAttacking()
-    {
-        //use when hit or need to disable attacking
-        stage = 0;
-        canReceiveInput = false;
-    }
-
     public void allowAttackCancel()
     {
-        
-        canReceiveInput = true;
+        canCancel = true;
     }
 
     public void endJumpAttack()
     {
-        
-        canReceiveInput = true;
-        pm.endJumpEarly();
-        pm.isAttacking = false;
-        pm.resetAnimatonState();
+        stage = 0;
+        pm.updateAnimationAllowed = true;
+        isBusy = false;
     }
 
     public void resetAttackAnim()
     {
-        canReceiveInput = false;
-        recovering = true;
+        canCancel = false;
         stage = 0;
-        
-        pm.isAttacking = false;
+        pm.updateAnimationAllowed = true;
         pm.movementEnabled = true;
-        pm.IsDashing = false;
-        pm.resetAnimatonState();
-        canReceiveInput = true;
-        recovering = false;
+        isBusy = false;
     }
 
 
+
+    public void endChain()
+    {
+        resetAttackAnim();
+    }
+
+    public void stunPlayer()
+    {
+        anim.Play(PlayerAnimStates.DAMAGE_ANIM, -1, 0f);
+        isBusy = true;
+        canCancel = false;
+        stage = 0;
+        pm.stunPlayer();
+    }
+
+    public void endStun()
+    {
+        isBusy = false;
+        resetAttackAnim();
+        pm.endStun();
+    }
 
 }

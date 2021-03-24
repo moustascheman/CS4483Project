@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageManager : MonoBehaviour
+public class DamageSource : MonoBehaviour
 {
     public float currentDamage = 0f;
     public float currentHitstun = 0f;
