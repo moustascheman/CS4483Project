@@ -58,7 +58,7 @@ public class ShooterBehavior : EnemyBehavior
         busy = true;
         //perform attack
         Debug.Log("firing");
-        controller.playAnimWithCancels("fire");
+        controller.playAnimWithCancels("wizFire");
     }
 
 
