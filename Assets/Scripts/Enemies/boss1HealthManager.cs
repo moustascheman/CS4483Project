@@ -13,9 +13,20 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
     private EnemyController controller;
 
     private float currentComboStage = 0;
+
+    [SerializeField]
+    private SpriteRenderer sr;
+
+    [SerializeField]
+    private Material defaultMat;
+
+    [SerializeField]
+    private Material flashMat;
+
     public void Kill()
     {
         controller.playAnim("die");
+        controller.pauseBehavior();
         Destroy(gameObject, 4f);
     }
 
@@ -39,7 +50,15 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
             else
             {
                 currentHealth -= dam;
+                sr.material = flashMat;
+                Invoke("resetFlash", 0.2f);
             }
         }
+    }
+
+
+    private void resetFlash()
+    {
+        sr.material = defaultMat;
     }
 }
