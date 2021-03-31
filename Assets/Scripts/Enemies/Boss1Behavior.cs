@@ -65,7 +65,7 @@ public class Boss1Behavior : EnemyBehavior
                 if (distance <= minMeleeDistance)
                 {
                     //higher chance of melee combo
-                    if (chance < 50)
+                    if (chance < 70)
                     {
                         //melee
                         controller.FaceTowards(target.transform);

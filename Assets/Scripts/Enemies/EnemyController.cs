@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     private bool DefaultFaceDirectionIsLeft = false;
     private string state = "";
 
+    private bool deathLock = false;
+
     [SerializeField]
     private EnemyBehavior bhvr;
 
@@ -40,9 +42,23 @@ public class EnemyController : MonoBehaviour
         bhvr.busy = true;
     }
 
+    public void DeathLock()
+    {
+        deathLock = true;
+    }
+
+    public void unlock()
+    {
+        deathLock = false;
+    }
+
+
     public void resumeBehavior()
     {
-        bhvr.busy = false;
+        if (!deathLock)
+        {
+            bhvr.busy = false;
+        }
     }
 
     public void FaceTowards(Transform target)

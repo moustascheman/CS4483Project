@@ -6,6 +6,9 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
 {
 
     [SerializeField]
+    private PlayerManager pm;
+
+    [SerializeField]
     private float MaxHealth;
     [SerializeField]
     private float currentHealth;
@@ -75,11 +78,20 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         if(dam < 0)
         {
             Heal(-1 * dam);
+            //TODO: REMOVE THIS GUARD ONCE PM IS A PART OF THE PREFAB
+            if (pm)
+            {
+                pm.UpdatePlayerHealth(currentHealth, MaxHealth);
+            }
         }
         else if(comboStage > currentComboStage)
         {
             currentHealth -= dam;
             currentComboStage = comboStage;
+            if (pm)
+            {
+                pm.UpdatePlayerHealth(currentHealth, MaxHealth);
+            }
             if(currentHealth <= 0)
             {
                 Kill();
