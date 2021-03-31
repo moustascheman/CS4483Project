@@ -34,10 +34,16 @@ public class CombatManager : MonoBehaviour
             if (groundState)
             {
                 regularAttack();
+
+                //AUDIO sfx CODE
+                SoundManagerScript.PlaySound("hitSound");
+
             }
             else
             {
                 jumpAttack();
+                //AUDIO sfx CODE
+                SoundManagerScript.PlaySound("hitSound");
             }
         }
     }
