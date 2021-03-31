@@ -23,8 +23,6 @@ public class HealthManager : MonoBehaviour, IHealthManager
     private string damAnim = "wizDam";
 
 
-    [SerializeField]
-    //DO NOT CHANGE FROM DEFAULT ZERO ON ANY ENEMY
     private float currentComboStage = 0;
 
     [SerializeField]
