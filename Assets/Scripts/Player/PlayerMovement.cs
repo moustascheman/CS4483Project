@@ -104,12 +104,16 @@ public class PlayerMovement : MonoBehaviour
         jumpStatus = status;
         if (jumpStatus != 0)
         {
+           
+
             if (!hasJumped && isGrounded)
             {
                 yVelocity = IsDashing ? (initialJumpVelocity + dashJumpModifier) : initialJumpVelocity;
                 isGrounded = false;
                 hasJumped = true;
                 launchedJump = true;
+                //AUDIO sfx CODE
+                SoundManagerScript.PlaySound("jumpSound");
             }
         }
         else
@@ -125,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 inVector = input.Get<Vector2>();
         xInput = inVector.x;
+        
     }
 
 
@@ -258,6 +263,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 IsDashing = true;
                 DashTimer = 0f;
+                //AUDIO sfx CODE
+                SoundManagerScript.PlaySound("slideSound");
             }
         }
         else

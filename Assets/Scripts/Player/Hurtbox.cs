@@ -16,5 +16,6 @@ public class Hurtbox : MonoBehaviour
     {
         Debug.Log("HIT");
         healthMan.DealDamage(dam, hitstun, stage);
+        
     }
 }

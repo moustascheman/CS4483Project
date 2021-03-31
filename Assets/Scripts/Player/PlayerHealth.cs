@@ -108,6 +108,7 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         if(iframes != null)
         {
             StopCoroutine(iframes);
+           
         }
         isStunned = true;
         cmb.stunPlayer();
@@ -115,6 +116,8 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         if(!isBlinking)
         {
             blinkRoutine = StartCoroutine(blink());
+            //AUDIO sfx CODE
+            SoundManagerScript.PlaySound("hitReactSound");
         }
         
     }

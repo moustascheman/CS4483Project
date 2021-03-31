@@ -21,9 +21,11 @@ public class Hitbox : MonoBehaviour
         Hurtbox hurtbox = col.GetComponent<Hurtbox>();
         if (hurtbox)
         {
+
             if ((isPlayerHitbox && !hurtbox.isPlayerHurtbox) || (!isPlayerHitbox && hurtbox.isPlayerHurtbox))
             {
                 hurtbox.detectHit(dam.currentDamage, dam.currentHitstun, dam.comboStage);
+
             }
         }
     }

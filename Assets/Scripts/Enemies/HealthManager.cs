@@ -46,15 +46,21 @@ public class HealthManager : MonoBehaviour, IHealthManager
 
    public void Kill()
     {
-        foreach(GameObject obj  in hBoxes)
+        //AUDIO sfx CODE
+        SoundManagerScript.PlaySound("enemyDieSound");
+
+        foreach (GameObject obj  in hBoxes)
         {
             obj.SetActive(false);
+            
         }
         StopCoroutine(hitstunRoutine);
+
         controller.pauseBehavior();
         controller.playAnim(deathAnim);
         Drop();
         Destroy(gameObject, 4f);
+        
     }
 
     private void Drop()
@@ -76,6 +82,7 @@ public class HealthManager : MonoBehaviour, IHealthManager
     public void KillQuietly()
     {
         Destroy(gameObject);
+
     }
 
     public void DealDamage(float dam, float hitstun, int comboStage)
@@ -88,6 +95,9 @@ public class HealthManager : MonoBehaviour, IHealthManager
             {
                 currentHealth -= dam;
                 Kill();
+                //AUDIO sfx CODE
+                SoundManagerScript.PlaySound("enemyHitReactSound");
+
             }
             else
             {
@@ -98,13 +108,16 @@ public class HealthManager : MonoBehaviour, IHealthManager
                     currentHealth -= dam;
                     currentComboStage = comboStage;
                     hitstunRoutine = StartCoroutine(HitStun());
+                    //AUDIO sfx CODE
+                    SoundManagerScript.PlaySound("hitReactSound");
                 }
                 else
                 {
                     currentHealth -= dam;
                     currentComboStage = comboStage;
                     hitstunRoutine = StartCoroutine(HitStun());
-                    
+                    //AUDIO sfx CODE
+                    SoundManagerScript.PlaySound("hitReactSound");
                 }
             }
         }

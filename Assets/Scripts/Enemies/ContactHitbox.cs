@@ -18,6 +18,7 @@ public class ContactHitbox : MonoBehaviour
             if (hurtbox.isPlayerHurtbox)
             {
                 hurtbox.detectHit(damage, 0f, comboStage);
+                
             }
         }
     }
