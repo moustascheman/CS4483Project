@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class boss1HealthManager : MonoBehaviour, IHealthManager
 {
@@ -33,9 +34,14 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
     {
         controller.playAnim("die");
         controller.pauseBehavior();
+        
         Destroy(gameObject, 4f);
     }
 
+    public void LoadScene(){
+        //Added to load level select scene on boss death, (boss death animation has loadscene EVENT)
+        SceneManager.LoadScene("LevelSelect");
+    }
 
     public void KillQuietly()
     {
@@ -87,7 +93,5 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
         yield return new WaitForSeconds(time);
         sr.material = defaultMat;
     }
-
-
 
 }
