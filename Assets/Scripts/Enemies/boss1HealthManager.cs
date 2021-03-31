@@ -23,6 +23,12 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
     [SerializeField]
     private Material flashMat;
 
+    [SerializeField]
+    private BossManager bm;
+
+    private bool isFlashing = false;
+    private Coroutine flashRoutine;
+
     public void Kill()
     {
         controller.playAnim("die");
@@ -45,13 +51,27 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
             if ((currentHealth - dam) <= 0)
             {
                 currentHealth -= dam;
+                if (bm)
+                {
+                    bm.updateHealthBar(currentHealth, MaxHealth);
+                }
                 Kill();
             }
             else
             {
                 currentHealth -= dam;
+                if (bm)
+                {
+                    bm.updateHealthBar(currentHealth, MaxHealth);
+                }
                 sr.material = flashMat;
-                Invoke("resetFlash", 0.2f);
+                if (isFlashing)
+                {
+                    StopCoroutine(flashRoutine);
+                }
+
+                isFlashing = true;
+                flashRoutine = StartCoroutine(Flash(0.2f));
             }
         }
     }
@@ -61,4 +81,13 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
     {
         sr.material = defaultMat;
     }
+
+    private IEnumerator Flash(float time)
+    {
+        yield return new WaitForSeconds(time);
+        sr.material = defaultMat;
+    }
+
+
+
 }

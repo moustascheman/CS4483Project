@@ -19,12 +19,12 @@ public class GameManager : MonoBehaviour
 
     public void UpdateBossHealthBar(float currentHealth, float maxHealth)
     {
-
+        uiMan.UpdateBossHealthSlider(currentHealth, maxHealth);
     }
 
     public void UpdateBossNameText(string name)
     {
-
+        uiMan.UpdateBossName(name);
     }
 
 

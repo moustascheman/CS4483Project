@@ -61,6 +61,7 @@ public class FinalBossBehavior : EnemyBehavior
     {
         currentPatrolPoint = navPoints[0];
         currentIndex = 0;
+        controller.FaceTowards(currentPatrolPoint);
     }
 
 

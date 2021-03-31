@@ -15,7 +15,10 @@ public class PlayerManager : MonoBehaviour
     
     public void UpdatePlayerHealth(float currentHealth, float maxHealth)
     {
-        gm.UpdatePlayerHealthBar(currentHealth, maxHealth);
+        if (gm)
+        {
+            gm.UpdatePlayerHealthBar(currentHealth, maxHealth);
+        }
     }
     
 }
