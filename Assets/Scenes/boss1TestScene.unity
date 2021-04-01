@@ -819,10 +819,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 365226385, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
-      propertyPath: pm
+    - target: {fileID: 1603955052, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
+      propertyPath: gm
       value: 
-      objectReference: {fileID: 1603955052}
+      objectReference: {fileID: 479591113}
     - target: {fileID: 4374934192204486948, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
       propertyPath: m_Name
       value: PlayerKnight
@@ -1384,24 +1384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335c70d9b00d74a4d893ba1d56721e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1603955051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4374934192204486948, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
-  m_PrefabInstance: {fileID: 816935392}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1603955052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603955051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b0497bd558aed146a3cc683e9df55ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 479591113}
 --- !u!1 &1685864348
 GameObject:
   m_ObjectHideFlags: 0

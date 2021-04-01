@@ -74,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool stunned = false;
 
-
+    [SerializeField]
+    private ActorSoundManager sm;
 
     void FixedUpdate()
     {
@@ -113,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 hasJumped = true;
                 launchedJump = true;
                 //AUDIO sfx CODE
-                SoundManagerScript.PlaySound("jumpSound");
+                sm.PlayEffect("jump");
             }
         }
         else
@@ -264,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
                 IsDashing = true;
                 DashTimer = 0f;
                 //AUDIO sfx CODE
-                SoundManagerScript.PlaySound("slideSound");
+                sm.PlayEffect("dash");
             }
         }
         else
