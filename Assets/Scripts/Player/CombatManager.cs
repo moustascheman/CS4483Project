@@ -15,6 +15,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
+    [SerializeField]
+    private ActorSoundManager sm;
+
     public int stage = 0;
 
     //Can Cancel during the recovery frames of an attack
@@ -35,15 +38,10 @@ public class CombatManager : MonoBehaviour
             {
                 regularAttack();
 
-                //AUDIO sfx CODE
-                SoundManagerScript.PlaySound("hitSound");
-
             }
             else
             {
                 jumpAttack();
-                //AUDIO sfx CODE
-                SoundManagerScript.PlaySound("hitSound");
             }
         }
     }
@@ -63,6 +61,7 @@ public class CombatManager : MonoBehaviour
             UpdateDamageManagerSettings();
             pm.resetAnimatonState();
             pm.changeAnimationState(PlayerAnimStates.ATTACK1_START);
+            sm.PlayEffect("attack1");
         }
         else if (stage == 1)
         {
@@ -70,12 +69,14 @@ public class CombatManager : MonoBehaviour
             stage++;
             UpdateDamageManagerSettings();
             pm.changeAnimationState(PlayerAnimStates.ATTACK2_START);
+            sm.PlayEffect("attack2");
         }
         else if (stage == 2)
         {
             stage++;
             UpdateDamageManagerSettings();
             pm.changeAnimationState(PlayerAnimStates.ATTACK3_START);
+            sm.PlayEffect("attack3");
         }
     }
 

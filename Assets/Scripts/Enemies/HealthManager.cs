@@ -42,12 +42,15 @@ public class HealthManager : MonoBehaviour, IHealthManager
     [SerializeField]
     private float dropInitialJump = 0.5f;
 
+    [SerializeField]
+    private ActorSoundManager sm;
+
 
 
    public void Kill()
     {
         //AUDIO sfx CODE
-        SoundManagerScript.PlaySound("enemyDieSound");
+        sm.PlayEffect("die");
 
         foreach (GameObject obj  in hBoxes)
         {
@@ -90,13 +93,12 @@ public class HealthManager : MonoBehaviour, IHealthManager
         //attack only connects if combo stage is greater than current stage
         if(comboStage > currentComboStage)
         {
+            sm.PlayEffect("dam");
             //attack hits
             if((currentHealth - dam) <= 0)
             {
                 currentHealth -= dam;
                 Kill();
-                //AUDIO sfx CODE
-                SoundManagerScript.PlaySound("enemyHitReactSound");
 
             }
             else
@@ -107,17 +109,13 @@ public class HealthManager : MonoBehaviour, IHealthManager
                     StopCoroutine(hitstunRoutine);
                     currentHealth -= dam;
                     currentComboStage = comboStage;
-                    hitstunRoutine = StartCoroutine(HitStun());
-                    //AUDIO sfx CODE
-                    SoundManagerScript.PlaySound("hitReactSound");
+                    hitstunRoutine = StartCoroutine(HitStun());                   
                 }
                 else
                 {
                     currentHealth -= dam;
                     currentComboStage = comboStage;
                     hitstunRoutine = StartCoroutine(HitStun());
-                    //AUDIO sfx CODE
-                    SoundManagerScript.PlaySound("hitReactSound");
                 }
             }
         }

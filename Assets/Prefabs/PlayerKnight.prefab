@@ -378,6 +378,9 @@ GameObject:
   - component: {fileID: 365226383}
   - component: {fileID: 365226384}
   - component: {fileID: 365226385}
+  - component: {fileID: 1603955053}
+  - component: {fileID: 1603955052}
+  - component: {fileID: 1603955054}
   m_Layer: 0
   m_Name: PlayerKnight
   m_TagString: Player
@@ -540,14 +543,9 @@ MonoBehaviour:
   dm: {fileID: 365226384}
   pm: {fileID: 4374934192204486971}
   anim: {fileID: 4374934192204486968}
-  canReceiveInput: 1
-  inputReceived: 0
-  recovering: 0
+  sm: {fileID: 1603955054}
   stage: 0
-  hitboxLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  cUtil: {fileID: 4374934192204486970}
+  isBusy: 0
 --- !u!114 &4374934192204486970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +597,9 @@ MonoBehaviour:
   IsDashing: 0
   DashTimer: 0
   currentState: idle
-  isAttacking: 0
+  updateAnimationAllowed: 1
+  stunned: 0
+  sm: {fileID: 1603955054}
 --- !u!61 &365226383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -653,12 +653,146 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a86982d4b43af48aaf1d7ef163224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pm: {fileID: 1603955052}
   MaxHealth: 20
   currentHealth: 20
   invulnTime: 2
+  isStunned: 0
   knockbackDist: 0
   cmb: {fileID: 4374934192204486973}
   anim: {fileID: 4374934192204486968}
   hboxList:
   - {fileID: 4374934191556760173}
   sRenderer: {fileID: 4374934192204486951}
+  sm: {fileID: 1603955054}
+--- !u!82 &1603955053
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374934192204486948}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1603955052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374934192204486948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0497bd558aed146a3cc683e9df55ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+--- !u!114 &1603955054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374934192204486948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b98ef846cee4280f1a91b82b8ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageSound: {fileID: 8300000, guid: 2b9db06ee4076164196ee3086a0c0f76, type: 3}
+  dieSound: {fileID: 8300000, guid: b98c91e19d7521d46b7509196ee66369, type: 3}
+  moveSound: {fileID: 8300000, guid: 5394c92434b7ced498cbb39fc09e3f85, type: 3}
+  jumpSound: {fileID: 8300000, guid: d1de417392d29a04cb006dc0417e5cf1, type: 3}
+  castSound: {fileID: 0}
+  attack1Sound: {fileID: 8300000, guid: 5326f76d4e33280458183f6d6573a5b6, type: 3}
+  attack2Sound: {fileID: 8300000, guid: 5326f76d4e33280458183f6d6573a5b6, type: 3}
+  attack3Sound: {fileID: 8300000, guid: 5326f76d4e33280458183f6d6573a5b6, type: 3}
+  dashSound: {fileID: 8300000, guid: 6c79795b3a9bf9b46b8008dca7b3487f, type: 3}
+  src: {fileID: 1603955053}

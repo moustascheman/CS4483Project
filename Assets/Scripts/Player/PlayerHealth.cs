@@ -35,6 +35,8 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
     [SerializeField]
     private SpriteRenderer sRenderer;
 
+    [SerializeField]
+    private ActorSoundManager sm;
 
 
 
@@ -117,7 +119,7 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         {
             blinkRoutine = StartCoroutine(blink());
             //AUDIO sfx CODE
-            SoundManagerScript.PlaySound("hitReactSound");
+            sm.PlayEffect("dam");
         }
         
     }
