@@ -25,4 +25,8 @@ public class LevelSelect : MonoBehaviour
     {
         SceneManager.LoadScene("Backstage");
     }
+
+    public void finalBoss(){
+        SceneManager.LoadScene("FBossTestScene"); //Placeholder, change to actual final boss scene
+    }
 }
