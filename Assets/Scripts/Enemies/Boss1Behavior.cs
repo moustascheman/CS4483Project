@@ -163,14 +163,14 @@ public class Boss1Behavior : EnemyBehavior
 
     private void endTP()
     {
+        StartCoroutine(coolDownMinor(0.1f));
         busy = false;
-        controller.playAnim("idle");
     }
 
 
     private void EndFireballAnim()
     {
-        print("ENDFIREBALL");
+        
         if(fireBallCount >= fireballsPerSequence)
         {
             fireBallCount = 0;
@@ -208,6 +208,14 @@ public class Boss1Behavior : EnemyBehavior
         coolingDown = true;
         controller.playAnim("idle");
         yield return new WaitForSeconds(coolDownTime);
+        coolingDown = false;
+    }
+
+    private IEnumerator coolDownMinor(float time)
+    {
+        coolingDown = true;
+        controller.playAnim("idle");
+        yield return new WaitForSeconds(time);
         coolingDown = false;
     }
 

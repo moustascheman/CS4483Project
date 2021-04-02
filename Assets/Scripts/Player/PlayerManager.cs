@@ -20,5 +20,13 @@ public class PlayerManager : MonoBehaviour
             gm.UpdatePlayerHealthBar(currentHealth, maxHealth);
         }
     }
+
+    public void PlayerDefeat()
+    {
+        if (gm)
+        {
+            gm.DefeatScreen();
+        }
+    }
     
 }

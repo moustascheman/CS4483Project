@@ -54,6 +54,7 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         {
             obj.SetActive(false);
         }
+        StartCoroutine(defeatScreen());
     }
 
 
@@ -161,5 +162,11 @@ public class PlayerHealth :  MonoBehaviour, IHealthManager
         }
         sRenderer.enabled = true;
         isBlinking = false;
+    }
+
+    IEnumerator defeatScreen()
+    {
+        yield return new WaitForSeconds(3f);
+        pm.PlayerDefeat();
     }
 }
