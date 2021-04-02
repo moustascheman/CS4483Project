@@ -33,5 +33,10 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    public void PlayerVictory()
+    {
+        gm.VictoryScreen();
+    }
+
 
 }

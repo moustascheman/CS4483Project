@@ -67,6 +67,7 @@ public class ShooterBehavior : EnemyBehavior
         GameObject projectile = Instantiate(projectileObj, firingPoint);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.velocity = controller.forwardDir * projectileVelocity;
+        projectile.transform.parent = null;
     }
 
     public void returnToIdle()

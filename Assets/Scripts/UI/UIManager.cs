@@ -26,6 +26,19 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI bossHealthBarName;
 
+    [SerializeField]
+    private GameObject bossUIInfo;
+
+
+    [SerializeField]
+    private GameObject defeatScreen;
+
+    [SerializeField]
+    private GameObject VictoryScreen;
+
+    [SerializeField]
+    private GameManager gm;
+
     public void OnPause()
     {
         TogglePause();
@@ -76,4 +89,36 @@ public class UIManager : MonoBehaviour
     {
         bossHealthBarName.text = name;
     }
+
+    public void ActivateBossUI()
+    {
+        bossUIInfo.SetActive(true);
+    }
+
+    public void DeactivateBossUI()
+    {
+        bossUIInfo.SetActive(false);
+    }
+
+    public void toMap()
+    {
+        gm.LoadLevelSelect();
+    }
+
+    public void reloadScene()
+    {
+        gm.reloadScene();
+    }
+
+
+    public void ActivateVictoryScreen()
+    {
+        VictoryScreen.SetActive(true);
+    }
+
+    public void ActivateDefeatScreen()
+    {
+        defeatScreen.SetActive(true);
+    }
+
 }
