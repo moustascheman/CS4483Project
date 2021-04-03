@@ -789,7 +789,7 @@ MonoBehaviour:
   takeDamageSound: {fileID: 8300000, guid: 2b9db06ee4076164196ee3086a0c0f76, type: 3}
   dieSound: {fileID: 8300000, guid: b98c91e19d7521d46b7509196ee66369, type: 3}
   moveSound: {fileID: 8300000, guid: 5394c92434b7ced498cbb39fc09e3f85, type: 3}
-  jumpSound: {fileID: 8300000, guid: d1de417392d29a04cb006dc0417e5cf1, type: 3}
+  jumpSound: {fileID: 0}
   castSound: {fileID: 0}
   attack1Sound: {fileID: 8300000, guid: 5326f76d4e33280458183f6d6573a5b6, type: 3}
   attack2Sound: {fileID: 8300000, guid: 5326f76d4e33280458183f6d6573a5b6, type: 3}
