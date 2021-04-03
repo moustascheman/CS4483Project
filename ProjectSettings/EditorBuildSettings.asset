@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BackstageBoss.unity
     guid: cf7fbeaaaca4b3b449200f9664ccfb32
+  - enabled: 1
+    path: Assets/Scenes/DungeonBoss.unity
+    guid: e2ea01ea7201de9468ef5c086f11aece
   m_configObjects: {}
