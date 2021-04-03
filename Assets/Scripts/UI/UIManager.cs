@@ -72,6 +72,12 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void returnToLevelSelect()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(2);
+    }
+
 
     public void UpdatePlayerHealthSlider(float currentHealth, float maxHealth)
     {
