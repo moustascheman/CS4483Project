@@ -502,9 +502,11 @@ MonoBehaviour:
   currentHealth: 20
   controller: {fileID: 8127790714076114995}
   invulnTimer: 0
+  idleAnim: wizIdle
   deathAnim: wizDie
   damAnim: wizDam
   isInHitStun: 0
+  bufferTime: 0
   hBoxes:
   - {fileID: 8127790712639073831}
   - {fileID: 8127790712422127857}
@@ -629,7 +631,6 @@ MonoBehaviour:
   attack1Sound: {fileID: 0}
   attack2Sound: {fileID: 0}
   attack3Sound: {fileID: 0}
-  dashSound: {fileID: 0}
   src: {fileID: -755643700978674448}
 --- !u!1 &8127790714119784306
 GameObject:

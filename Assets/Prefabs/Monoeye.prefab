@@ -292,9 +292,11 @@ MonoBehaviour:
   currentHealth: 20
   controller: {fileID: 3151581661736779307}
   invulnTimer: 0
+  idleAnim: idle
   deathAnim: death
   damAnim: dam
   isInHitStun: 0
+  bufferTime: 0.5
   hBoxes:
   - {fileID: 3151581662030035839}
   - {fileID: 3151581661364284793}
@@ -346,7 +348,6 @@ MonoBehaviour:
   attack1Sound: {fileID: 0}
   attack2Sound: {fileID: 0}
   attack3Sound: {fileID: 0}
-  dashSound: {fileID: 0}
   src: {fileID: 4005933011528787703}
 --- !u!82 &4005933011528787703
 AudioSource:

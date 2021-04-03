@@ -89,6 +89,7 @@ public class CombatManager : MonoBehaviour
         dm.comboStage = 3;
 
         pm.changeAnimationState(PlayerAnimStates.JUMP_ATTACK);
+        sm.PlayEffect("attack1");
 
     }
 

@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 53526521938611507}
   - component: {fileID: 53526521938611508}
   - component: {fileID: -4735550500203237367}
+  - component: {fileID: 485906979290062547}
+  - component: {fileID: 2096866688}
+  - component: {fileID: 8948137129817984581}
   m_Layer: 0
   m_Name: DukeBoss
   m_TagString: Untagged
@@ -150,6 +153,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   minStoppingDistance: 0.5
   moveSpeed: 0.1
   rb: {fileID: 53526521938611508}
@@ -180,7 +186,7 @@ MonoBehaviour:
   invulnTimer: 2
   sRenderer: {fileID: 53526521938611510}
   bufferTime: 0.5
-  bm: {fileID: 0}
+  bm: {fileID: 2096866688}
 --- !u!114 &53526521938611507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +319,56 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &485906979290062547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53526521938611496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  bossName: 
+--- !u!114 &2096866688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53526521938611496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  bossName: The Duke's Shade
+--- !u!114 &8948137129817984581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53526521938611496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b98ef846cee4280f1a91b82b8ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamageSound: {fileID: 0}
+  dieSound: {fileID: 0}
+  moveSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  castSound: {fileID: 0}
+  attack1Sound: {fileID: 0}
+  attack2Sound: {fileID: 0}
+  attack3Sound: {fileID: 0}
+  dashSound: {fileID: 0}
+  src: {fileID: -4735550500203237367}
 --- !u!1 &53526522206349812
 GameObject:
   m_ObjectHideFlags: 0

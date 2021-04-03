@@ -379,7 +379,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7809670531252908359, guid: 8c27a898ca1a5a548be3a9ba9cae7132, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1b0126f9323d41149a29408ac85c7c6e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -21525,6 +21525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1826913107}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
 --- !u!1 &1554476871
@@ -23509,36 +23513,28 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2035229983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4430239398382448250, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
-  m_PrefabInstance: {fileID: 1395805642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2035229984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4430239398382448242, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
   m_PrefabInstance: {fileID: 1395805642}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035229983}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 335c70d9b00d74a4d893ba1d56721e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2035229990
+--- !u!114 &2035229990 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+  m_PrefabInstance: {fileID: 1395805642}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035229983}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 1826913107}
-  bossName: The Grim Reaper
 --- !u!1001 &3108499799909145381
 PrefabInstance:
   m_ObjectHideFlags: 0

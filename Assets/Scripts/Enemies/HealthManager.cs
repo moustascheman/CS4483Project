@@ -15,6 +15,9 @@ public class HealthManager : MonoBehaviour, IHealthManager
     [SerializeField]
     private float invulnTimer;
 
+    [SerializeField]
+    private string idleAnim = "wizIdle";
+
 
     [SerializeField]
     private string deathAnim = "wizDie";
@@ -29,6 +32,11 @@ public class HealthManager : MonoBehaviour, IHealthManager
     private bool isInHitStun = false;
 
     private Coroutine hitstunRoutine;
+    private Coroutine bufferRoutine;
+
+    private bool isInBufferTime = false;
+    [SerializeField]
+    private float bufferTime = 0.3f;
 
     [SerializeField]
     private List<GameObject> hBoxes;
@@ -49,6 +57,8 @@ public class HealthManager : MonoBehaviour, IHealthManager
 
    public void Kill()
     {
+        controller.pauseBehavior();
+        controller.DeathLock();
         //AUDIO sfx CODE
         sm.PlayEffect("die");
 
@@ -57,9 +67,6 @@ public class HealthManager : MonoBehaviour, IHealthManager
             obj.SetActive(false);
             
         }
-        StopCoroutine(hitstunRoutine);
-
-        controller.pauseBehavior();
         controller.playAnim(deathAnim);
         Drop();
         Destroy(gameObject, 4f);
@@ -94,45 +101,39 @@ public class HealthManager : MonoBehaviour, IHealthManager
         if(comboStage > currentComboStage)
         {
             sm.PlayEffect("dam");
+            currentHealth -= dam;
             //attack hits
-            if((currentHealth - dam) <= 0)
+            if((currentHealth) <= 0)
             {
-                currentHealth -= dam;
                 Kill();
-
             }
             else
             {
+                controller.pauseBehavior();
                 controller.playAnimWithCancels(damAnim);
-                if (isInHitStun)
-                {
-                    StopCoroutine(hitstunRoutine);
-                    currentHealth -= dam;
-                    currentComboStage = comboStage;
-                    hitstunRoutine = StartCoroutine(HitStun());                   
-                }
-                else
-                {
-                    currentHealth -= dam;
-                    currentComboStage = comboStage;
-                    hitstunRoutine = StartCoroutine(HitStun());
-                }
             }
         }
     }
       
-    public IEnumerator HitStun()
-    {
-        controller.pauseBehavior();
-        isInHitStun = true;
-        yield return new WaitUntil(() => !isInHitStun);
-        currentComboStage = 0;
-        controller.resumeBehavior();
-    }
 
     private void EndStun()
     {
-        isInHitStun = false;
+        controller.playAnim(idleAnim);
+        controller.pauseBehavior();
+        if (isInBufferTime)
+        {
+            StopCoroutine(bufferRoutine);
+        }
+        isInBufferTime = true;
+        bufferRoutine = StartCoroutine(Buffering());
+
+    }
+
+    IEnumerator Buffering()
+    {
+        yield return new WaitForSeconds(bufferTime);
+        isInBufferTime = false;
+        controller.resumeBehavior();        
     }
 
 }

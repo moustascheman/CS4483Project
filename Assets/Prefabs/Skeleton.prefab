@@ -164,9 +164,11 @@ MonoBehaviour:
   currentHealth: 20
   controller: {fileID: 1515197144966564201}
   invulnTimer: 0
+  idleAnim: idle
   deathAnim: death
   damAnim: dam
   isInHitStun: 0
+  bufferTime: 0.5
   hBoxes:
   - {fileID: 1515197146882783029}
   - {fileID: 1515197145305473178}
@@ -254,7 +256,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -314,7 +316,6 @@ MonoBehaviour:
   attack1Sound: {fileID: 0}
   attack2Sound: {fileID: 0}
   attack3Sound: {fileID: 0}
-  dashSound: {fileID: 0}
   src: {fileID: 3541981564818351583}
 --- !u!1 &1515197145305473178
 GameObject:
