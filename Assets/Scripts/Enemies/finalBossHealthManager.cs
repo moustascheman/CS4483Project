@@ -37,6 +37,9 @@ public class finalBossHealthManager : MonoBehaviour, IHealthManager
 
     private Coroutine blinkRoutine;
 
+
+    [SerializeField]
+    private BossManager bm;
     public void Kill()
     {
         controller.DeathLock();
@@ -57,6 +60,7 @@ public class finalBossHealthManager : MonoBehaviour, IHealthManager
         {
             currentHealth -= dam;
             currentComboStage = comboStage;
+            bm.updateHealthBar(currentHealth, MaxHealth);
             if (currentHealth <= 0)
             {
                 Kill();

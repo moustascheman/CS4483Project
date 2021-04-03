@@ -9,7 +9,7 @@ public class LevelSelect : MonoBehaviour
     //Main menu screen button wiring to scenes
     public void tutorial()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("IntroLevel");
     }
 
     public void garden()
@@ -27,6 +27,6 @@ public class LevelSelect : MonoBehaviour
     }
 
     public void finalBoss(){
-        SceneManager.LoadScene("FBossTestScene"); //Placeholder, change to actual final boss scene
+        SceneManager.LoadScene("FinalBossArena"); //Placeholder, change to actual final boss scene
     }
 }
