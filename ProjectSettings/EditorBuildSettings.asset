@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: edf10f46f6e310840ab93d2579471470
   - enabled: 1
+    path: Assets/Scenes/IntroLevel.unity
+    guid: fc2be6e7eb239684db119e37cd56079e
+  - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 3b19657591891234eaa5ed17b0e9db7e
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/GardenScene.unity
     guid: b1eead2db37610b429a262ab233c27b3
+  - enabled: 1
+    path: Assets/Scenes/GardenBoss.unity
+    guid: f6de751105021f84c9d5ae8c16d2851e
   - enabled: 1
     path: Assets/Scenes/DungeonBasementScene.unity
     guid: a2b7513e4537e6c499738430c89d9d37
@@ -24,12 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Backstage.unity
     guid: 00eb5fec607e0804fb375ca3ab0aa274
   - enabled: 1
-    path: Assets/Scenes/FBossTestScene.unity
-    guid: ae50ccf6af8d838438e25b2e4f5f6fa0
-  - enabled: 1
     path: Assets/Scenes/BackstageBoss.unity
     guid: cf7fbeaaaca4b3b449200f9664ccfb32
   - enabled: 1
-    path: Assets/Scenes/DungeonBoss.unity
-    guid: e2ea01ea7201de9468ef5c086f11aece
+    path: Assets/Scenes/FBossTestScene.unity
+    guid: ae50ccf6af8d838438e25b2e4f5f6fa0
+  - enabled: 1
+    path: Assets/Scenes/FinalBossArena.unity
+    guid: a16123570b3d874439b1132bee8fc298
   m_configObjects: {}
