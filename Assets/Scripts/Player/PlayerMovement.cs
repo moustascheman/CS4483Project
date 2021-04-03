@@ -113,8 +113,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = false;
                 hasJumped = true;
                 launchedJump = true;
-                //AUDIO sfx CODE
-                sm.PlayEffect("jump");
+                
             }
         }
         else

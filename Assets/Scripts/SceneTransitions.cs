@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneTransitions : MonoBehaviour
 {
     public string sceneName;
-    public void OnCollisionEnter2D(Collision2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {

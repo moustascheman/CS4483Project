@@ -1225,7 +1225,7 @@ AudioSource:
   m_GameObject: {fileID: 171446957}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7809670531252908359, guid: 8c27a898ca1a5a548be3a9ba9cae7132, type: 2}
   m_audioClip: {fileID: 8300000, guid: 59424579db76f5547b342d4c3c0079f7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4463,12 +4463,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -8.923958, y: 14.785977}
-      - {x: -8.943293, y: -9.552063}
-      - {x: 52.473427, y: -9.151951}
-      - {x: 53.02276, y: -13.929969}
-      - {x: 139.75311, y: -13.6481}
-      - {x: 139.56305, y: 14.829891}
+    - - {x: 18.476316, y: 0.23758459}
+      - {x: 16.07217, y: 2.2162406}
+      - {x: -3.8736444, y: 1.9971604}
+      - {x: -3.750929, y: -2.1510139}
+      - {x: 14.889696, y: -2.2983966}
+      - {x: 17.050987, y: -3.5906289}
+      - {x: 40.07436, y: -3.5192008}
+      - {x: 40.082695, y: 0.26829362}
 --- !u!222 &363256858
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10752,7 +10754,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.2165527, y: -0.19228554}

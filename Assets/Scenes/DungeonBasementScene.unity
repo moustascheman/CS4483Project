@@ -48177,12 +48177,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 9.511294, y: 9.527864}
-      - {x: 6.87836, y: 9.492505}
-      - {x: -8.764932, y: 9.344483}
-      - {x: -9.122541, y: -30.336082}
-      - {x: 111.03946, y: -30.788467}
-      - {x: 111.05704, y: 7.1678753}
+    - - {x: 87.753456, y: 6.1245923}
+      - {x: 19.939333, y: 2.479951}
+      - {x: 9.864205, y: 6.1714487}
+      - {x: -11.7524185, y: 6.2626066}
+      - {x: -11.780626, y: -4.5685105}
+      - {x: 3.0385141, y: -15.883137}
+      - {x: 12.083431, y: -28.954344}
+      - {x: 44.82341, y: -24.875828}
+      - {x: 81.71006, y: -15.497901}
+      - {x: 115.44371, y: -13.29791}
+      - {x: 115.30868, y: 5.7154236}
 --- !u!1001 &377576807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48457,6 +48462,10 @@ PrefabInstance:
     - target: {fileID: 4374934192204486950, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374934192204486971, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
+      propertyPath: initialJumpVelocity
+      value: 12.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6d151f73cd04ee4dba786bb4dba7bbf, type: 3}
@@ -48878,7 +48887,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.54
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -48902,7 +48911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8500004, y: -0.72, z: -10}
+  m_LocalPosition: {x: -2.8678274, y: 0.431422, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48949,7 +48958,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.115745544, y: -0.68805504}
@@ -50424,7 +50433,6 @@ GameObject:
   - component: {fileID: 1069425495}
   - component: {fileID: 1069425498}
   - component: {fileID: 1069425497}
-  - component: {fileID: 1069425496}
   m_Layer: 10
   m_Name: Background2
   m_TagString: Untagged
@@ -50446,38 +50454,6 @@ Transform:
   m_Father: {fileID: 653791905}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1069425496
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069425494}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 11.640555, y: 9.325081}
-      - {x: 6.87836, y: 9.492505}
-      - {x: -8.764932, y: 9.344483}
-      - {x: -8.71697, y: -4.582143}
-      - {x: -9.091297, y: -31.154444}
-      - {x: 111.05303, y: -31.013165}
-      - {x: 111.71532, y: 7.0438256}
 --- !u!483693784 &1069425497
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -51978,7 +51954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 0}
+  m_BoundingShape2D: {fileID: 363256856}
   m_ConfineScreenEdges: 1
   m_Damping: 0
 --- !u!114 &1305411957
@@ -52003,7 +51979,7 @@ MonoBehaviour:
   m_Follow: {fileID: 808760947}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3.54
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -52659,10 +52635,10 @@ AudioSource:
   m_GameObject: {fileID: 1503657842}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7809670531252908359, guid: 8c27a898ca1a5a548be3a9ba9cae7132, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6fba63921beac2b45aab7e22eb9a27d1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.389
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -69933,7 +69909,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 23
+      m_TileSpriteIndex: 31
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -78970,8 +78946,8 @@ Tilemap:
     m_Data: {fileID: 2775054071784456662, guid: 1e0e7283bb4f6894091bf7928034cc12, type: 3}
   - m_RefCount: 123
     m_Data: {fileID: 4282995244716403159, guid: 1e0e7283bb4f6894091bf7928034cc12, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300256, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -78986,8 +78962,8 @@ Tilemap:
     m_Data: {fileID: -6245462294010370606, guid: 1e0e7283bb4f6894091bf7928034cc12, type: 3}
   - m_RefCount: 34
     m_Data: {fileID: -8244242997266392971, guid: 1e0e7283bb4f6894091bf7928034cc12, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300256, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 21300260, guid: cf57b3e7835b02e4493371d9bc259b1b, type: 3}
   - m_RefCount: 12
