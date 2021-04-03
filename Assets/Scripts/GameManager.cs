@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevelSelect()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void reloadScene()
