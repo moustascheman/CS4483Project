@@ -53,6 +53,9 @@ public class FinalBossBehavior : EnemyBehavior
     [SerializeField]
     private float combo3Dam = 3;
 
+    [SerializeField]
+    private ActorSoundManager sm;
+
 
 
     private int currentAttack = 0;
@@ -121,6 +124,7 @@ public class FinalBossBehavior : EnemyBehavior
             controller.FaceTowards(target.transform);
             updateDamageValue();
             controller.playAnim("attack1");
+            sm.PlayEffect("attack1");
         }
         else //idle
         {
@@ -170,6 +174,7 @@ public class FinalBossBehavior : EnemyBehavior
                 currentAttack = 2;
                 updateDamageValue();
                 controller.playAnim("attack2");
+                sm.PlayEffect("attack1");
                 return;
             }
         }
@@ -182,6 +187,7 @@ public class FinalBossBehavior : EnemyBehavior
                 currentAttack=3;
                 updateDamageValue();
                 controller.playAnim("attack3");
+                sm.PlayEffect("attack1");
                 return;
             }
         }

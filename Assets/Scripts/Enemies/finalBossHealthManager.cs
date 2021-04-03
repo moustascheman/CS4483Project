@@ -40,11 +40,16 @@ public class finalBossHealthManager : MonoBehaviour, IHealthManager
 
     [SerializeField]
     private BossManager bm;
+
+    [SerializeField]
+    private ActorSoundManager sm;
+
     public void Kill()
     {
         controller.DeathLock();
         controller.pauseBehavior();
         controller.playAnim("die");
+        StartCoroutine(PlayerVictorious());
         Destroy(gameObject, 4f);
     }
 
@@ -61,6 +66,7 @@ public class finalBossHealthManager : MonoBehaviour, IHealthManager
             currentHealth -= dam;
             currentComboStage = comboStage;
             bm.updateHealthBar(currentHealth, MaxHealth);
+            sm.PlayEffect("dam");
             if (currentHealth <= 0)
             {
                 Kill();
@@ -150,6 +156,12 @@ public class finalBossHealthManager : MonoBehaviour, IHealthManager
         }
         sRenderer.enabled = true;
         isBlinking = false;
+    }
+
+    IEnumerator PlayerVictorious()
+    {
+        yield return new WaitForSeconds(3f);
+        bm.PlayerVictory();
     }
 
 }

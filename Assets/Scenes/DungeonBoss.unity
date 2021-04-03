@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 4430239398382448241, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
       propertyPath: bm
       value: 
-      objectReference: {fileID: 89176235}
+      objectReference: {fileID: 10874997}
     - target: {fileID: 4430239398382448241, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
       propertyPath: MaxHealth
       value: 100
@@ -242,8 +242,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 2115108609}
+    - target: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+      propertyPath: bossName
+      value: The Lead Actor's Ghost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+--- !u!114 &10874997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+  m_PrefabInstance: {fileID: 10874996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &12168175
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,36 +298,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2671069383068761924, guid: 0e06e2b0813b33c459eb5fb7a3297f4c, type: 3}
   m_PrefabInstance: {fileID: 1420286414}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &89176228 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4430239398382448250, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
-  m_PrefabInstance: {fileID: 10874996}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &89176229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4430239398382448242, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
   m_PrefabInstance: {fileID: 10874996}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89176228}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 335c70d9b00d74a4d893ba1d56721e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &89176235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89176228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 2115108609}
-  bossName: The Lead Actor's Ghost
 --- !u!1001 &93412655
 PrefabInstance:
   m_ObjectHideFlags: 0

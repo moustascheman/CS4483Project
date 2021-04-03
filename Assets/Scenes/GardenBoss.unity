@@ -6852,7 +6852,7 @@ PrefabInstance:
     - target: {fileID: 4430239398382448241, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
       propertyPath: bm
       value: 
-      objectReference: {fileID: 2035229990}
+      objectReference: {fileID: 1395805643}
     - target: {fileID: 4430239398382448241, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
       propertyPath: MaxHealth
       value: 100
@@ -6961,8 +6961,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1826913107}
+    - target: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+      propertyPath: bossName
+      value: Spirit of the Gardener
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+--- !u!114 &1395805643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5555760735970463456, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
+  m_PrefabInstance: {fileID: 1395805642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1407641798
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,36 +8353,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2035229983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4430239398382448250, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
-  m_PrefabInstance: {fileID: 1395805642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2035229984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4430239398382448242, guid: 32ae120c728ff5b4aace1133432766e2, type: 3}
   m_PrefabInstance: {fileID: 1395805642}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035229983}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 335c70d9b00d74a4d893ba1d56721e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2035229990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035229983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fee25b359aed64bb84759fed68cecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 1826913107}
-  bossName: Spirit of the Gardener
 --- !u!4 &556595212538574315
 Transform:
   m_ObjectHideFlags: 1

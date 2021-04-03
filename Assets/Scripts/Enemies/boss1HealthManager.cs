@@ -26,6 +26,9 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
     [SerializeField]
     private BossManager bm;
 
+    [SerializeField]
+    private ActorSoundManager sm;
+
     private bool isFlashing = false;
     private Coroutine flashRoutine;
 
@@ -53,6 +56,7 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
             if ((currentHealth - dam) <= 0)
             {
                 currentHealth -= dam;
+                sm.PlayEffect("dam");
                 if (bm)
                 {
                     bm.updateHealthBar(currentHealth, MaxHealth);
@@ -62,6 +66,7 @@ public class boss1HealthManager : MonoBehaviour, IHealthManager
             else
             {
                 currentHealth -= dam;
+                sm.PlayEffect("dam");
                 if (bm)
                 {
                     bm.updateHealthBar(currentHealth, MaxHealth);

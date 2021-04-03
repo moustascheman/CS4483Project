@@ -263,8 +263,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 IsDashing = true;
                 DashTimer = 0f;
-                //AUDIO sfx CODE
-                sm.PlayEffect("dash");
             }
         }
         else
