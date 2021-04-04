@@ -39,9 +39,7 @@ public class ShooterBehavior : EnemyBehavior
 
     IEnumerator CoolDown()
     {
-        //TODO: move idling behavior to controller
         coolingDown = true;
-        Debug.Log("Idling");
         controller.playAnim("wizIdle");
         yield return new WaitForSeconds(coolDownTime);
         coolingDown = false;
@@ -57,11 +55,11 @@ public class ShooterBehavior : EnemyBehavior
         coolDown = true;
         busy = true;
         //perform attack
-        Debug.Log("firing");
         controller.playAnimWithCancels("wizFire");
     }
 
 
+    //To be called by animation event
     private void FireProjectile()
     {
         GameObject projectile = Instantiate(projectileObj, firingPoint);
