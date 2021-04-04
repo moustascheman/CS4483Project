@@ -14,7 +14,6 @@ public class Hurtbox : MonoBehaviour
 
     public virtual void detectHit(float dam, float hitstun, int stage)
     {
-        Debug.Log("HIT");
         healthMan.DealDamage(dam, hitstun, stage);
         
     }
